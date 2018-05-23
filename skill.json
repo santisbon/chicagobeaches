@@ -1,0 +1,53 @@
+{
+  "manifest": {
+    "publishingInformation": {
+      "locales": {
+        "en-US": {
+          "summary": "Beach weather data from automated sensors at Chicago beaches.",
+          "examplePhrases": [
+            "Alexa, open Chicago Beaches",
+            "What's it like at the north side beaches",
+            "How's the weather?"
+          ],
+          "keywords": [
+            "Chicago",
+            "weather",
+            "beach",
+            "water",
+            "summer",
+            "sun",
+            "lake",
+            "swim",
+            "sports",
+            "run",
+            "bike"
+          ],
+          "name": "Chicago Beaches",
+          "smallIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/f806/b12a3fa10ce24c24ac21729b6840a897/APP_ICON?versionId=XQToNJgjZNDAbC3V9f4e8v6ngnOn7ENv&AWSAccessKeyId=AKIAI3X6PUXD7CU5F5BQ&Expires=1527190712&Signature=W34%2Fh9q66ABd7qP9uEbhV39inPU%3D",
+          "description": "Weather data from automated sensors located at select Chicago beaches along the Lake Michigan lakefront.",
+          "largeIconUri": "https://s3.amazonaws.com/CAPS-SSE/echo_developer/bc99/44dc936f0164462789695640f78c3f09/APP_ICON_LARGE?versionId=S3VybOg02Qq93b6zgj_AyKwZN96McPWx&AWSAccessKeyId=AKIAI3X6PUXD7CU5F5BQ&Expires=1527190712&Signature=vm3Bw%2FQRHEjp%2F6wLKTglMBcGaDc%3D"
+        }
+      },
+      "isAvailableWorldwide": true,
+      "testingInstructions": "\"Alexa, open Chicago Beaches\"  \n\"Alexa, ask Chicago Beaches how's the weather\"  \n\"Alexa, ask Chicago Beaches how's the weather at Oak Street beach\"  \n\"Alexa, ask Chicago Beaches what's it like at the north side beaches\"",
+      "category": "WEATHER",
+      "distributionCountries": []
+    },
+    "apis": {
+      "custom": {
+        "endpoint": {
+          "sourceDir": "lambda/custom"
+        },
+        "interfaces": []
+      }
+    },
+    "manifestVersion": "1.0",
+    "privacyAndCompliance": {
+      "allowsPurchases": false,
+      "isExportCompliant": true,
+      "containsAds": false,
+      "isChildDirected": false,
+      "usesPersonalInfo": false
+    }
+  }
+}

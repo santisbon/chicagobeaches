@@ -1,0 +1,127 @@
+{
+  "interactionModel": {
+    "languageModel": {
+      "invocationName": "chicago beaches",
+      "intents": [
+        {
+          "name": "AMAZON.FallbackIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.CancelIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.HelpIntent",
+          "samples": []
+        },
+        {
+          "name": "AMAZON.StopIntent",
+          "samples": []
+        },
+        {
+          "name": "WeatherIntent",
+          "slots": [
+            {
+              "name": "station",
+              "type": "WEATHER_STATIONS",
+              "samples": [
+                "{station} beach",
+                "{station}"
+              ]
+            }
+          ],
+          "samples": [
+            "how's the weather",
+            "{station}",
+            "how's the weather {station}",
+            "what's it like {station}",
+            "how's the weather at the {station} beaches",
+            "how's the weather at the {station}",
+            "how's the weather at {station} beaches",
+            "how's the weather at {station}",
+            "how's the weather on the {station} beaches",
+            "how's the weather on the {station}",
+            "how's the weather on {station} beaches",
+            "how's the weather on {station}",
+            "what's it like at the {station} beaches",
+            "what's it like at the {station}",
+            "what's it like at {station} beaches",
+            "what's it like at {station}",
+            "what's it like on the {station} beaches",
+            "what's it like on the {station}",
+            "what's it like on {station} beaches",
+            "what's it like on {station}"
+          ]
+        }
+      ],
+      "types": [
+        {
+          "values": [
+            {
+              "id": "OAK_STREET",
+              "name": {
+                "value": "Oak Street",
+                "synonyms": [
+                  "central",
+                  "downtown"
+                ]
+              }
+            },
+            {
+              "id": "FOSTER",
+              "name": {
+                "value": "Foster",
+                "synonyms": [
+                  "north side",
+                  "north"
+                ]
+              }
+            },
+            {
+              "id": "63RD_STREET",
+              "name": {
+                "value": "63rd Street",
+                "synonyms": [
+                  "south side",
+                  "south"
+                ]
+              }
+            }
+          ],
+          "name": "WEATHER_STATIONS"
+        }
+      ]
+    },
+    "dialog": {
+      "intents": [
+        {
+          "name": "WeatherIntent",
+          "confirmationRequired": false,
+          "slots": [
+            {
+              "name": "station",
+              "type": "WEATHER_STATIONS",
+              "elicitationRequired": true,
+              "confirmationRequired": false,
+              "prompts": {
+                "elicitation": "Elicit.Slot.1281478045917.397459047337"
+              }
+            }
+          ]
+        }
+      ]
+    },
+    "prompts": [
+      {
+        "id": "Elicit.Slot.1281478045917.397459047337",
+        "variations": [
+          {
+            "type": "PlainText",
+            "value": "Please tell me which beaches are you interested in. North side, downtown, or south side?"
+          }
+        ]
+      }
+    ]
+  }
+}

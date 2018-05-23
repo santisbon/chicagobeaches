@@ -1,0 +1,25 @@
+{
+  "name": "chi-beaches",
+  "version": "1.0.0",
+  "description": "Beach weather readings from Chicago beaches",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha './*.spec.js'"
+  },
+  "author": "Armando C. Santisbon",
+  "license": "MIT",
+  "dependencies": {
+    "ask-sdk": "^2.0.5",
+    "moment": "^2.22.1"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.19.1",
+    "eslint-config-standard": "^11.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "eslint-plugin-node": "^6.0.1",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-standard": "^3.1.0",
+    "mocha": "^5.1.1"
+  }
+}
