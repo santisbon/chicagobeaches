@@ -9,7 +9,7 @@
   "author": "Armando C. Santisbon",
   "license": "MIT",
   "dependencies": {
-    "alexa-helper": "^1.0.0",
+    "alexa-helper": "^1.0.1",
     "ask-sdk": "^2.0.5",
     "moment-timezone": "^0.5.17"
   },

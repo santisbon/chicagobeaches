@@ -25,7 +25,7 @@ const title = 'Chicago Beaches';
 const errorMessage = 'I am really sorry. I am unable to access weather station data. Please try again later.';
 
 const api = {
-    host: 'data.cityofchicago.org',
+    hostname: 'data.cityofchicago.org',
     resource: '/resource/77jv-5zb8.json'
 };
 
