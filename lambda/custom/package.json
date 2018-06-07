@@ -4,13 +4,14 @@
   "description": "Beach weather readings from Chicago beaches",
   "main": "index.js",
   "scripts": {
-    "test": "mocha './*.spec.js'"
+    "test": "BEACHES_APP_TOKEN='' mocha './{,!(node_modules)/**/}*.spec.js' "
   },
   "author": "Armando C. Santisbon",
   "license": "MIT",
   "dependencies": {
+    "alexa-helper": "^1.0.0",
     "ask-sdk": "^2.0.5",
-    "moment": "^2.22.1"
+    "moment-timezone": "^0.5.17"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -20,6 +21,7 @@
     "eslint-plugin-node": "^6.0.1",
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-standard": "^3.1.0",
-    "mocha": "^5.1.1"
+    "mocha": "^5.1.1",
+    "virtual-alexa": "^0.6.5"
   }
 }
