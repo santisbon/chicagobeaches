@@ -1,12 +1,12 @@
 const title = 'Chicago Beaches';
 
-const welcomeMessage = `Welcome to ${title}, you can ask me things like how's the weather, or what's it like at north side beaches. You can also ask for help.`;
-const welcomeMessageDisplay = `"How's the weather?"\n"What's it like at north side beaches?"`;
-const helpMessage = `You can ask me about the weather in Chicago beaches in the north side,
-downtown, or south side. The weather stations are at the Foster, Oak Street, and 63rd Street beaches respectively.
-Which region would you like? Downtown, north, or south side?`;
+const welcomeMessage = `Welcome to ${title}, you can ask me things like how's the weather, what's it like at north side beaches, or how's the water quality at Ohio Street Beach. You can also ask for help.`;
+const welcomeMessageDisplay = `"How's the weather?"\n"What's it like at north side beaches?"\n"How's the water quality at Ohio Street Beach?"`;
+const helpMessage = `You can ask me about the weather in Chicago beaches in the north side, downtown, or south side.
+You can also ask how's the water quality in select beaches like Ohio Street Beach.
+How can I help you?`;
 const cancelAndStopMessage = 'Goodbye!';
-const genericErrorMessage = "Sorry, I didn't get that. You can ask me for beach weather info or ask for help.";
+const genericErrorMessage = "Sorry, I didn't get that. You can ask me for beach weather info, water quality, or ask for help.";
 
 /**
  * The LaunchRequest event occurs when the skill is invoked without a specific intent.

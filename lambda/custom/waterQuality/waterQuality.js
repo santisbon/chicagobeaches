@@ -1,46 +1,40 @@
 'use strict';
 
-/*
-    Beach Weather Stations (latest is 2018)
-    https://data.cityofchicago.org/resource/77jv-5zb8.json?station_name=Oak Street Weather Station&$where=measurement_timestamp>'2018-05-15'
-
-    Beach Swim Advisories (latest is 2016)
-    https://data.cityofchicago.org/resource/49xd-abuh.json?$where=date between '2018-01-01' and '2018-12-31'
-
-    Beach Lab data (latest is 2016)
-    https://data.cityofchicago.org/resource/awhh-mb2r.json?$where=culture_sample_1_timestamp between '2018-01-01' and '2018-12-31'
-*/
+/* Beach Water Quality examples
+    https://data.cityofchicago.org/resource/46rk-hgnz.json?$where=measurement_timestamp between '2018-01-01' and '2018-12-31'
+    https://data.cityofchicago.org/resource/46rk-hgnz.json?beach_name=Calumet Beach&$where=measurement_timestamp between '2018-01-01' and '2018-12-31'
+    https://data.cityofchicago.org/resource/46rk-hgnz.json?beach_name=Montrose Beach&$where=measurement_timestamp between '2018-01-01' and '2018-12-31' */
 
 const helper = require('alexa-helper');
 const moment = require('moment-timezone');
 
 const title = 'Chicago Beaches';
-const errorMessage = 'I am really sorry. I am unable to access weather station data. Please try again later.';
+const errorMessage = 'I am really sorry. I am unable to access the water quality data. Please try again later.';
 
 const api = {
     hostname: 'data.cityofchicago.org',
-    resource: '/resource/77jv-5zb8.json'
+    resource: '/resource/46rk-hgnz.json'
 };
 
-const WeatherIntent = 'WeatherIntent';
+const waterQualityIntent = 'WaterQualityIntent';
 
-const startDate = moment().tz('America/Chicago').format('YYYY-MM-DD');
+const date = moment().tz('America/Chicago').format('YYYY-MM-DD');
 
 /**
  * The Socrata APIs provide rich query functionality through a query language called
  * “Socrata Query Language” or “SoQL”.
  */
-const SoQL = `measurement_timestamp>'${startDate}'`;
+const SoQL = `measurement_timestamp>'${date}'`;
 
 const requiredSlots = [
-    'station'
+    'sensor'
 ];
 
 function buildParams(slotValues, SoQL) {
     var params = [];
 
-    if (slotValues.station_name) {
-        params.push(['station_name', `${slotValues.station.resolved}` + ' Weather Station']);
+    if (slotValues.beach_name) {
+        params.push(['beach_name', `${slotValues.sensor.resolved}` + ' Beach']);
     }
 
     if (SoQL) {
@@ -56,10 +50,10 @@ function buildParams(slotValues, SoQL) {
  * It also uses entity resolution to ask the user for clarification if
  * a synonym is mapped to two slot values.
  */
-const InProgressWeatherIntentHandler = {
+const InProgressWaterQualityIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-        handlerInput.requestEnvelope.request.intent.name === WeatherIntent &&
+        handlerInput.requestEnvelope.request.intent.name === waterQualityIntent &&
         handlerInput.requestEnvelope.request.dialogState !== 'COMPLETED';
     },
     handle(handlerInput) {
@@ -116,10 +110,10 @@ const InProgressWeatherIntentHandler = {
     }
 };
 
-const CompletedWeatherIntentHandler = {
+const CompletedWaterQualityIntentHandler = {
     canHandle(handlerInput) {
         return handlerInput.requestEnvelope.request.type === 'IntentRequest' &&
-        handlerInput.requestEnvelope.request.intent.name === WeatherIntent &&
+        handlerInput.requestEnvelope.request.intent.name === waterQualityIntent &&
         handlerInput.requestEnvelope.request.dialogState === 'COMPLETED';
     },
     async handle(handlerInput) {
@@ -137,24 +131,20 @@ const CompletedWeatherIntentHandler = {
 
             if (response.length > 0) {
                 outputSpeech =
-                `For the ${slotValues.station.synonym} region the station at ${slotValues.station.resolved} beach 
-                shows the air temperature is ${latestMeasurement.air_temperature} °C and the
-                wet bulb temperature is ${latestMeasurement.wet_bulb_temperature} °C with
-                winds speed of ${latestMeasurement.wind_speed} m/s.
-                There is ${latestMeasurement.humidity}% relative humidity and the
-                solar radiation is ${latestMeasurement.solar_radiation} watts/m^2.
+                `The sensor at ${latestMeasurement.beach_name}
+                shows the water temperature is ${latestMeasurement.water_temperature} °C
+                with water turbidity of ${latestMeasurement.turbidity} Nephelometric Turbidity Units.
+                Wave height is ${latestMeasurement.wave_height} meters.
                 Measured on ${latestMeasurement.measurement_timestamp_label}.
                 `;
                 outputDisplay =
-                `For ${slotValues.station.synonym}: ${slotValues.station.resolved} beach station
-                Air temp = ${latestMeasurement.air_temperature} °C
-                Wet bulb temp = ${latestMeasurement.wet_bulb_temperature} °C
-                Wind speed = ${latestMeasurement.wind_speed} m/s
-                Relative humidity = ${latestMeasurement.humidity}%
-                Solar radiation = ${latestMeasurement.solar_radiation} watts/m^2
+                `${latestMeasurement.beach_name} - ${latestMeasurement.measurement_timestamp_label}
+                Water temp = ${latestMeasurement.water_temperature} °C
+                Turbidity = ${latestMeasurement.turbidity} NTU
+                Wave height = ${latestMeasurement.wave_height} m
                 `;
             } else {
-                outputSpeech = outputDisplay = `I am sorry. I could not find a match for ${slotValues.station.synonym}`;
+                outputSpeech = outputDisplay = `I am sorry. I could not find a match for ${slotValues.sensor.synonym}`;
                 console.log(options);
             }
         } catch (error) {
@@ -171,5 +161,5 @@ const CompletedWeatherIntentHandler = {
     }
 };
 
-exports.InProgressWeatherIntentHandler = InProgressWeatherIntentHandler;
-exports.CompletedWeatherIntentHandler = CompletedWeatherIntentHandler;
+exports.InProgressWaterQualityIntentHandler = InProgressWaterQualityIntentHandler;
+exports.CompletedWaterQualityIntentHandler = CompletedWaterQualityIntentHandler;

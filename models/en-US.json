@@ -1,127 +1,219 @@
 {
-  "interactionModel": {
-    "languageModel": {
-      "invocationName": "chicago beaches",
-      "intents": [
-        {
-          "name": "AMAZON.FallbackIntent",
-          "samples": []
+    "interactionModel": {
+        "languageModel": {
+            "invocationName": "chicago beaches",
+            "intents": [
+                {
+                    "name": "AMAZON.FallbackIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.CancelIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.HelpIntent",
+                    "samples": []
+                },
+                {
+                    "name": "AMAZON.StopIntent",
+                    "samples": []
+                },
+                {
+                    "name": "WeatherIntent",
+                    "slots": [
+                        {
+                            "name": "station",
+                            "type": "WEATHER_STATIONS",
+                            "samples": [
+                                "{station} beach",
+                                "{station}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "how's the weather",
+                        "{station}",
+                        "how's the weather {station}",
+                        "what's it like {station}",
+                        "how's the weather at the {station} beaches",
+                        "how's the weather at the {station}",
+                        "how's the weather at {station} beaches",
+                        "how's the weather at {station}",
+                        "how's the weather on the {station} beaches",
+                        "how's the weather on the {station}",
+                        "how's the weather on {station} beaches",
+                        "how's the weather on {station}",
+                        "what's it like at the {station} beaches",
+                        "what's it like at the {station}",
+                        "what's it like at {station} beaches",
+                        "what's it like at {station}",
+                        "what's it like on the {station} beaches",
+                        "what's it like on the {station}",
+                        "what's it like on {station} beaches",
+                        "what's it like on {station}"
+                    ]
+                },
+                {
+                    "name": "WaterQualityIntent",
+                    "slots": [
+                        {
+                            "name": "sensor",
+                            "type": "WATER_QUALITY_SENSORS",
+                            "samples": [
+                                "{sensor}"
+                            ]
+                        }
+                    ],
+                    "samples": [
+                        "Get me water quality",
+                        "Give me the water quality",
+                        "How's the water quality",
+                        "How's the water quality at {sensor} beach",
+                        "How's the water quality at {sensor}"
+                    ]
+                }
+            ],
+            "types": [
+                {
+                    "name": "WEATHER_STATIONS",
+                    "values": [
+                        {
+                            "id": "OAK_STREET",
+                            "name": {
+                                "value": "Oak Street",
+                                "synonyms": [
+                                    "central",
+                                    "downtown"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "FOSTER",
+                            "name": {
+                                "value": "Foster",
+                                "synonyms": [
+                                    "north side",
+                                    "north"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "63RD_STREET",
+                            "name": {
+                                "value": "63rd Street",
+                                "synonyms": [
+                                    "south side",
+                                    "south"
+                                ]
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "WATER_QUALITY_SENSORS",
+                    "values": [
+                        {
+                            "id": "RAINBOW",
+                            "name": {
+                                "value": "Rainbow"
+                            }
+                        },
+                        {
+                            "id": "OSTERMAN",
+                            "name": {
+                                "value": "Osterman"
+                            }
+                        },
+                        {
+                            "id": "OHIO_STREET",
+                            "name": {
+                                "value": "Ohio Street",
+                                "synonyms": [
+                                    "ohio"
+                                ]
+                            }
+                        },
+                        {
+                            "id": "MONTROSE",
+                            "name": {
+                                "value": "Montrose"
+                            }
+                        },
+                        {
+                            "id": "CALUMET",
+                            "name": {
+                                "value": "Calumet"
+                            }
+                        },
+                        {
+                            "id": "63RD_STREET",
+                            "name": {
+                                "value": "63rd Street",
+                                "synonyms": [
+                                    "63rd"
+                                ]
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.CancelIntent",
-          "samples": []
+        "dialog": {
+            "intents": [
+                {
+                    "name": "WeatherIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "station",
+                            "type": "WEATHER_STATIONS",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.1281478045917.397459047337"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "WaterQualityIntent",
+                    "confirmationRequired": false,
+                    "prompts": {},
+                    "slots": [
+                        {
+                            "name": "sensor",
+                            "type": "WATER_QUALITY_SENSORS",
+                            "confirmationRequired": false,
+                            "elicitationRequired": true,
+                            "prompts": {
+                                "elicitation": "Elicit.Slot.642786529588.813292293564"
+                            }
+                        }
+                    ]
+                }
+            ]
         },
-        {
-          "name": "AMAZON.HelpIntent",
-          "samples": []
-        },
-        {
-          "name": "AMAZON.StopIntent",
-          "samples": []
-        },
-        {
-          "name": "WeatherIntent",
-          "slots": [
+        "prompts": [
             {
-              "name": "station",
-              "type": "WEATHER_STATIONS",
-              "samples": [
-                "{station} beach",
-                "{station}"
-              ]
-            }
-          ],
-          "samples": [
-            "how's the weather",
-            "{station}",
-            "how's the weather {station}",
-            "what's it like {station}",
-            "how's the weather at the {station} beaches",
-            "how's the weather at the {station}",
-            "how's the weather at {station} beaches",
-            "how's the weather at {station}",
-            "how's the weather on the {station} beaches",
-            "how's the weather on the {station}",
-            "how's the weather on {station} beaches",
-            "how's the weather on {station}",
-            "what's it like at the {station} beaches",
-            "what's it like at the {station}",
-            "what's it like at {station} beaches",
-            "what's it like at {station}",
-            "what's it like on the {station} beaches",
-            "what's it like on the {station}",
-            "what's it like on {station} beaches",
-            "what's it like on {station}"
-          ]
-        }
-      ],
-      "types": [
-        {
-          "values": [
-            {
-              "id": "OAK_STREET",
-              "name": {
-                "value": "Oak Street",
-                "synonyms": [
-                  "central",
-                  "downtown"
+                "id": "Elicit.Slot.1281478045917.397459047337",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Please tell me which beaches are you interested in. North side, downtown, or south side?"
+                    }
                 ]
-              }
             },
             {
-              "id": "FOSTER",
-              "name": {
-                "value": "Foster",
-                "synonyms": [
-                  "north side",
-                  "north"
+                "id": "Elicit.Slot.642786529588.813292293564",
+                "variations": [
+                    {
+                        "type": "PlainText",
+                        "value": "Which beach would you like. Sixty third Street, Calumet, Montrose, Ohio Street, Osterman, or Rainbow Beach?"
+                    }
                 ]
-              }
-            },
-            {
-              "id": "63RD_STREET",
-              "name": {
-                "value": "63rd Street",
-                "synonyms": [
-                  "south side",
-                  "south"
-                ]
-              }
             }
-          ],
-          "name": "WEATHER_STATIONS"
-        }
-      ]
-    },
-    "dialog": {
-      "intents": [
-        {
-          "name": "WeatherIntent",
-          "confirmationRequired": false,
-          "slots": [
-            {
-              "name": "station",
-              "type": "WEATHER_STATIONS",
-              "elicitationRequired": true,
-              "confirmationRequired": false,
-              "prompts": {
-                "elicitation": "Elicit.Slot.1281478045917.397459047337"
-              }
-            }
-          ]
-        }
-      ]
-    },
-    "prompts": [
-      {
-        "id": "Elicit.Slot.1281478045917.397459047337",
-        "variations": [
-          {
-            "type": "PlainText",
-            "value": "Please tell me which beaches are you interested in. North side, downtown, or south side?"
-          }
         ]
-      }
-    ]
-  }
+    }
 }
