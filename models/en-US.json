@@ -128,10 +128,7 @@
                         {
                             "id": "OHIO_STREET",
                             "name": {
-                                "value": "Ohio Street",
-                                "synonyms": [
-                                    "ohio"
-                                ]
+                                "value": "Ohio Street"
                             }
                         },
                         {
@@ -149,10 +146,7 @@
                         {
                             "id": "63RD_STREET",
                             "name": {
-                                "value": "63rd Street",
-                                "synonyms": [
-                                    "63rd"
-                                ]
+                                "value": "63rd Street"
                             }
                         }
                     ]

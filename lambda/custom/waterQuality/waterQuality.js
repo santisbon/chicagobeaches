@@ -33,7 +33,7 @@ const requiredSlots = [
 function buildParams(slotValues, SoQL) {
     var params = [];
 
-    if (slotValues.beach_name) {
+    if (slotValues.sensor) {
         params.push(['beach_name', `${slotValues.sensor.resolved}` + ' Beach']);
     }
 
@@ -131,8 +131,7 @@ const CompletedWaterQualityIntentHandler = {
 
             if (response.length > 0) {
                 outputSpeech =
-                `The sensor at ${latestMeasurement.beach_name}
-                shows the water temperature is ${latestMeasurement.water_temperature} °C
+                `The sensor at ${latestMeasurement.beach_name} shows the water temperature is ${latestMeasurement.water_temperature} °C
                 with water turbidity of ${latestMeasurement.turbidity} Nephelometric Turbidity Units.
                 Wave height is ${latestMeasurement.wave_height} meters.
                 Measured on ${latestMeasurement.measurement_timestamp_label}.

@@ -39,7 +39,7 @@ const requiredSlots = [
 function buildParams(slotValues, SoQL) {
     var params = [];
 
-    if (slotValues.station_name) {
+    if (slotValues.station) {
         params.push(['station_name', `${slotValues.station.resolved}` + ' Weather Station']);
     }
 
@@ -136,9 +136,10 @@ const CompletedWeatherIntentHandler = {
             const latestMeasurement = response[response.length - 1];
 
             if (response.length > 0) {
+                // ${slotValues.station.resolved}
                 outputSpeech =
-                `For the ${slotValues.station.synonym} region the station at ${slotValues.station.resolved} beach 
-                shows the air temperature is ${latestMeasurement.air_temperature} °C and the
+                `For the ${slotValues.station.synonym} region the ${latestMeasurement.station_name} shows
+                the air temperature is ${latestMeasurement.air_temperature} °C and the
                 wet bulb temperature is ${latestMeasurement.wet_bulb_temperature} °C with
                 winds speed of ${latestMeasurement.wind_speed} m/s.
                 There is ${latestMeasurement.humidity}% relative humidity and the
@@ -146,7 +147,7 @@ const CompletedWeatherIntentHandler = {
                 Measured on ${latestMeasurement.measurement_timestamp_label}.
                 `;
                 outputDisplay =
-                `For ${slotValues.station.synonym}: ${slotValues.station.resolved} beach station
+                `For ${slotValues.station.synonym}: ${latestMeasurement.station_name}
                 Air temp = ${latestMeasurement.air_temperature} °C
                 Wet bulb temp = ${latestMeasurement.wet_bulb_temperature} °C
                 Wind speed = ${latestMeasurement.wind_speed} m/s
