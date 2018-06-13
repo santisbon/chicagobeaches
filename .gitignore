@@ -59,3 +59,7 @@ typings/
 
 # next.js build output
 .next
+
+# Alexa Skills Kit (ASK) files
+# Create a .ask/config file based on .ask/config.template for the ASK SDK to deploy your skill
+.ask
