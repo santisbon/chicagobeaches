@@ -61,6 +61,7 @@
                             "name": "sensor",
                             "type": "WATER_QUALITY_SENSORS",
                             "samples": [
+                                "{sensor} beach",
                                 "{sensor}"
                             ]
                         }
