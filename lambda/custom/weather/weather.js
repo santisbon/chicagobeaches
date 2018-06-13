@@ -155,8 +155,8 @@ const CompletedWeatherIntentHandler = {
                 Solar radiation = ${latestMeasurement.solar_radiation} watts/m^2
                 `;
             } else {
-                outputSpeech = outputDisplay = `I am sorry. I could not find a match for ${slotValues.station.synonym}`;
-                console.log(options);
+                outputSpeech = outputDisplay = `I'm sorry. No data was found for ${slotValues.station.synonym}`;
+                // console.log(options);
             }
         } catch (error) {
             outputSpeech = outputDisplay = errorMessage;

@@ -143,8 +143,8 @@ const CompletedWaterQualityIntentHandler = {
                 Wave height = ${latestMeasurement.wave_height} m
                 `;
             } else {
-                outputSpeech = outputDisplay = `I'm sorry. No data has been collected for ${slotValues.sensor.synonym} today.`;
-                console.log(options);
+                outputSpeech = outputDisplay = `I'm sorry. No data was found for ${slotValues.sensor.synonym}.`;
+                // console.log(options);
             }
         } catch (error) {
             outputSpeech = outputDisplay = errorMessage;
