@@ -45,19 +45,6 @@ describe('Chicago Beaches skill tests', function() {
         });
 
         it('Gets beach water quality conditions (Ohio Street) with dialog', async function() {
-            let sensor = 'Ohio Street';
-            // An intent that has delegated dialogs.
-            // alexa.intend() is what the user would do and it returns a promise.
-            let dialogReply = await alexa.intend('WaterQualityIntent');
-
-            assert.equal(dialogReply.skillResponse.directive('Dialog.Delegate').type, 'Dialog.Delegate');
-            assert.equal(dialogReply.prompt, 'Which beach would you like. Sixty third Street, Calumet, Montrose, Ohio Street, Osterman, or Rainbow Beach?');
-            // let skillReply = await alexa.intend('WaterQualityIntent', {sensor: sensor});
-            let skillReply = await alexa.utter(sensor);
-            assert.include(skillReply.response.outputSpeech.ssml, `${sensor} Beach shows the water temperature is`);
-        });
-
-        it('Does not get beach water quality conditions for incomplete beach name (Ohio) with dialog', async function() {
             let sensor = 'Ohio';
             // An intent that has delegated dialogs.
             // alexa.intend() is what the user would do and it returns a promise.
@@ -67,7 +54,7 @@ describe('Chicago Beaches skill tests', function() {
             assert.equal(dialogReply.prompt, 'Which beach would you like. Sixty third Street, Calumet, Montrose, Ohio Street, Osterman, or Rainbow Beach?');
             let skillReply = await alexa.intend('WaterQualityIntent', {sensor: sensor});
             // let skillReply = await alexa.utter(sensor);
-            assert.include(skillReply.response.outputSpeech.ssml, `No data was found for ${sensor}.`);
+            assert.include(skillReply.response.outputSpeech.ssml, `${sensor} Street Beach shows the water temperature is`);
         });
 
         it('Does not gets beach water quality conditions for Rainbow (no current data) with dialog', async function() {

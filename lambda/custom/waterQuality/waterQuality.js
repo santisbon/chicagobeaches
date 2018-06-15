@@ -31,9 +31,14 @@ const requiredSlots = [
 ];
 
 function buildParams(slotValues, SoQL) {
+    // console.log(slotValues);
+    // console.log(SoQL);
     var params = [];
 
     if (slotValues.sensor) {
+        if (slotValues.sensor.resolved === 'Ohio' || slotValues.sensor.resolved === '63rd') {
+            slotValues.sensor.resolved += ' Street';
+        }
         params.push(['beach_name', `${slotValues.sensor.resolved}` + ' Beach']);
     }
 
@@ -162,3 +167,5 @@ const CompletedWaterQualityIntentHandler = {
 
 exports.InProgressWaterQualityIntentHandler = InProgressWaterQualityIntentHandler;
 exports.CompletedWaterQualityIntentHandler = CompletedWaterQualityIntentHandler;
+// For testing
+exports.buildParams = buildParams;
