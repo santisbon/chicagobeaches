@@ -33,9 +33,7 @@
                     ],
                     "samples": [
                         "how's the weather",
-                        "{station}",
                         "how's the weather {station}",
-                        "what's it like {station}",
                         "how's the weather at the {station} beaches",
                         "how's the weather at the {station}",
                         "how's the weather at {station} beaches",
