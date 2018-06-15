@@ -71,6 +71,7 @@
                         "Give me the water quality",
                         "How's the water quality",
                         "How's the water quality at {sensor} beach",
+                        "How's the water quality at {sensor} street beach",
                         "How's the water quality at {sensor}"
                     ]
                 }
